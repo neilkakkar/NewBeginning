@@ -29,17 +29,19 @@ int main()
         }
     }
 
-    for(int i=0;i<k;i++)
+    int c[100005]={0};
+    for(int i=1;i<=k;i++)
     {
         int l,p,score;
         cin>>l>>p;
         l--;p--;
-        if(A[l][p]==0)
+        if(ans[l][p]==0)
         {
             score=0;
             queue< pair<int,int> > q;
             q.push(make_pair(l,p));
             A[l][p]=-1;
+            ans[l][p]=i;
             while(!q.empty())
             {
                 pair<int,int> r = q.front();
@@ -49,6 +51,7 @@ int main()
                 if(A[x1-1][y1]==0){
                     q.push(make_pair(x1-1,y1));
                     A[x1-1][y1]=-1;
+                    ans[x1-1][y1]=i;
                 }
                 else if(A[x1-1][y1]==1){
                     //cout<<x1<<" "<<y1<<" increas1"<<endl;
@@ -57,6 +60,8 @@ int main()
                 if(A[x1][y1-1]==0){
                     q.push(make_pair(x1,y1-1));
                     A[x1][y1-1]=-1;
+
+                    ans[x1][y1-1]=i;
                 }
                 else if(A[x1][y1-1]==1){
 
@@ -66,6 +71,8 @@ int main()
                 if(A[x1+1][y1]==0){
                     q.push(make_pair(x1+1,y1));
                     A[x1+1][y1]=-1;
+
+                    ans[x1+1][y1]=i;
                 }
                 else if(A[x1+1][y1]==1){
                     score++;
@@ -75,6 +82,8 @@ int main()
                 if(A[x1][y1+1]==0){
                     q.push(make_pair(x1,y1+1));
                     A[x1][y1+1]=-1;
+
+                    ans[x1][y1+1]=i;
                 }
                 else if(A[x1][y1+1]==1){
                     score++;
@@ -83,22 +92,11 @@ int main()
                 }
             }
 
-            for(int i1=0;i1<n;i1++)
-            {
-                for(int j1=0;j1<m;j1++)
-                {
-                    if(A[i1][j1]==-1)
-                    {
-                        ans[i1][j1]=score;
-                        //cout<<score<<endl;
-                        A[i1][j1]=0;
-                    }
-                }
-            }
+            c[i]=score;
             cout<<score<<endl;
         }
         else{
-            cout<<ans[l][p]<<endl;
+            cout<<c[ans[l][p]]<<endl;
         }
     }
 
