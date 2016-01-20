@@ -12,7 +12,7 @@ int main(){
     cin>>T;
     while(T--)
     {
-        int A[200]={0};
+
 
     }
 }
