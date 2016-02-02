@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
-double dist(int x1,int y1, int x2,int y2)
+#define ll long long
+double dist(ll x1,ll y1, ll x2,ll y2)
 {
-    return sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    return ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 }
 
-int x,y;
+ll x,y;
 
 double mod(double a)
 {
@@ -15,7 +15,7 @@ double mod(double a)
         return -a;
     return a;
 }
-double dline(int x1,int y1,int x2,int y2)
+double dline(ll x1,ll y1,ll x2,ll y2)
 {
     double l2 = dist(x1,y1,x2,y2);
     if(l2==0)
@@ -33,7 +33,7 @@ double dline(int x1,int y1,int x2,int y2)
     {
         return dist(x2,y2,x,y);
     }
-    return mod((double)((long long)y*(x2-x1)-y1*(x2-x1) - x*(y2-y1)+x1*(y2-y1))/dist(x1,y1,x2,y2));
+    return mod(l2*(double)(y*(x2-x1)-y1*(x2-x1) - x*(y2-y1)+x1*(y2-y1))/dist(x1,y1,x2,y2));
 
 }
 int main()
@@ -45,7 +45,7 @@ int main()
     vector<pair<int,int> > A;
     for(int i=0;i<n;i++)
     {
-        int x1,y1;
+        long long int x1,y1;
         cin>>x1>>y1;
         double d = dist(x1,y1,x,y);
         if(d>dmax)
@@ -73,8 +73,8 @@ int main()
             dmin=d;
         }
     }
-    double ans = 3.141592653589*(dmax*dmax - dmin*dmin);
-    cout<<setprecision(11)<<ans;
+    double ans = 3.141592653589*(dmax - dmin);
+    cout<<setprecision(12)<<ans;
 
 }
 

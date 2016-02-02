@@ -4,26 +4,27 @@ using namespace std;
 
 int main()
 {
-    freopen("input.txt","r",stdin);
-    long long int l,r,k;
+    //freopen("input.txt","r",stdin);
+    long long l,r,k;
     cin>>l>>r>>k;
 
     long long pow=1;
-    while(pow<l)
-    {
-        pow = pow*k;
-    }
+    //while(pow<l)
+    //{
+    //    pow = pow*k;
+    //}
     vector<long long> A;
 
-    while(pow<=r && pow>=l)
+    while(pow<=r/k)// && pow>=l)
+    {
+        if(pow<=r && pow>=l)
+        A.push_back(pow);
+        //cout<<pow<<" ";
+        pow = pow*k;
+    }
+    if(pow<=r && pow>=l)
     {
         A.push_back(pow);
-        cout<<pow<<" ";
-        pow = pow*k;
-        if(pow<=0)
-        {
-            pow = r+1;
-        }
     }
 
     if(A.empty())
