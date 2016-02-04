@@ -53,7 +53,6 @@ int main()
     if(src==-1)
     {
         cout<<"Yes\n";
-        int numB=N;
         while(N--)
         {
             cout<<"b";
@@ -68,7 +67,7 @@ int main()
             if(A[r][k]!=0)
             {
                 flag=1;
-                src=r;
+                //src=r;
                 break;
             }
         }
@@ -84,35 +83,33 @@ int main()
     {
         color[i]=-1;
     }
-    color[src]=1;
-    ans[src]=1;
-
-    int numA=0;
-    int numC=0;
-    queue<int> Q;
-    Q.push(src);
-
-    while(!Q.empty())
+    for(int i=0;i<N;i++)
     {
-        int u= Q.front();
-        Q.pop();
-
-        for(int v=0;v<N;v++)
+        if(color[i]==-1)
         {
-            if(A[u][v] && color[v]==-1)
+            ans[i]=1;
+            color[i]=1;
+        }
+        for(int j=0;j<N;j++)
+        {
+            if(A[i][j])
             {
-                color[v] = 1 - color[u];
-                ans[v]=1-ans[u];
-                Q.push(v);
-            }
-            else if(A[u][v] && color[u]==color[v])
-            {
-
-                cout<<"No";
-                return 0;
+                if(color[j]==-1)
+                {
+                    color[j]=1-color[i];
+                }
+                else if(color[j]==color[i])
+                {
+                    cout<<"No";
+                    return 0;
+                }
             }
         }
     }
+
+    int numA=0;
+    int numC=0;
+
     for(int i=0;i<N;i++)
     {
         if(color[i]==1)
@@ -122,31 +119,27 @@ int main()
         else if(color[i]==0)
             numC++;
     }
-    //numB = N - numA - numC;
-
+    numA = N - numB - numC;
 
     if(numA*numC!=(N*(N-1))/2 - M)
     {
         cout<<"No";
         return 0;
     }
-
     cout<<"Yes\n";
-    for(int i=0;i<N;i++)
+    while(numC--)
     {
-        if(ans[i]==0)
-        {
-            cout<<"a";
-        }
-        if(ans[i]==1)
-        {
-            cout<<"c";
-        }
-        if(ans[i]==2)
-        {
-            cout<<"b";
-        }
+        cout<<"c";
+    }
+    while(numA--)
+    {
+        cout<<"a";
+    }
+    while(numB--)
+    {
+        cout<<"b";
     }
 }
+
 
 
