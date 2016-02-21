@@ -18,25 +18,21 @@ int main()
 
     double M[n+1];
     M[1] = vol[1];
+    double topVol =vol[1];
     for(int i=2;i<=n;i++)
     {
         M[i] = vol[i];
-        for(int j=1;j<i;j++)
+        if(vol[i-1]<vol[i])
         {
-            if(vol[j]<vol[i] && M[i]<M[j]+vol[i])
-            {
-                M[i] = M[j]+vol[i];
-            }
+            M[i] = max(M[i],M[i-1]+vol[i]);
         }
-    }
-    double ans=0;
-    for(int i=1;i<=n;i++)
-    {
-        if(M[i]>ans)
+        else
         {
-            ans=M[i];
-        }
 
+            M[i] =max(M[i],M[i-1]);
+        }
     }
-    cout<<setprecision(16)<<ans;
+    cout<<setprecision(12)<<M[n];
+
 }
+
