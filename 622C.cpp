@@ -2,73 +2,56 @@
 
 using namespace std;
 #define sz (int)2e5+5
-int A[sz];
 
-vector<int> B[10*sz];
+int A[sz];
+int P[sz];
 int main()
 {
+    //ios_base::sync_with_stdio(0);
     int n,m;
-    cin>>n>>m;
-    for(int i=0;i<n;i++)
+    //cin>>n>>m;
+    scanf("%d %d",&n,&m);
+    for(int i=1;i<=n;i++)
     {
-        cin>>A[i];
-        B[A[i]].push_back(i);
+      //  cin>>A[i];
+        scanf("%d",&A[i]);
+    }
+    P[0]=-1;
+    P[1]=-1;
+    for(int i=2;i<=n;i++)
+    {
+        if( A[i]!=A[i-1])
+        {
+            P[i] = i-1;
+        }
+        else
+        {
+            P[i] = P[i-1];
+        }
     }
     for(int i=0;i<m;i++)
     {
         int l,r,x;
-        cin>>l>>r>>x;
-        l--;r--;
-        if(B[x].size()==0)
+        //cin>>l>>r>>x;
+        scanf("%d %d %d",&l,&r,&x);
+        if(A[r]!=x)
         {
-            cout<<l+1<<"\n";
+            //cout<<r<<endl;
+            printf("%d\n",r);
         }
         else
         {
-            int k;
-            for(k=0;k<B[x].size();k++)
+            if(P[r]>=l)
             {
-                if(B[x][k]>=l)
-                {
-                    break;
-                }
-            }
-            if(B[x][k]>l)
-            {
-                cout<<l+1<<"\n";
+                printf("%d\n",P[r]);
+                //cout<<P[r]<<endl;
             }
             else
             {
-                int flag=0;
-                int j;
-                for(j=k;j<B[x].size() && B[x][j]<=r;j++)
-                {
-                    if(B[x][j]!=l)
-                    {
-                        cout<<l+1<<"\n";
-                        flag=1;
-                        break;
-                    }
-                    l++;
-                }
-                if(flag==0 && j<B[x].size())
-                {
-                    cout<<"-1\n";
-                }
-                else if(j==B[x].size())
-                {
-                    if(l>r)
-                    {
-                        cout<<"-1\n";
-                    }
-                    else
-                    cout<<l+1<<"\n";
-                }
+                printf("-1\n");
             }
         }
     }
-
-
 
 }
 
