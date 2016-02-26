@@ -18,6 +18,9 @@ void rev(int ind,int width)
 }
 int main()
 {
+    int x=32;
+    int y= x&(-x);
+    cout<<y;
     //cout<<rev(0,2,"abcdef");
     //ios_base::sync_with_stdio(0);
     string s;
