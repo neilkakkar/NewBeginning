@@ -4,7 +4,7 @@ using namespace std;
 #define ll long long
 double dist(ll x1,ll y1, ll x2,ll y2)
 {
-    return ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    return sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 }
 
 ll x,y;
@@ -33,7 +33,7 @@ double dline(ll x1,ll y1,ll x2,ll y2)
     {
         return dist(x2,y2,x,y);
     }
-    return mod(l2*(double)(y*(x2-x1)-y1*(x2-x1) - x*(y2-y1)+x1*(y2-y1))/dist(x1,y1,x2,y2));
+    return mod((double)(y*(x2-x1)-y1*(x2-x1) - x*(y2-y1)+x1*(y2-y1))/dist(x1,y1,x2,y2));
 
 }
 int main()
@@ -42,7 +42,7 @@ int main()
     cin>>n>>x>>y;
     double dmax=0;
     double dmin = 1e18;
-    vector<pair<int,int> > A;
+    vector<pair<ll,ll> > A;
     for(int i=0;i<n;i++)
     {
         long long int x1,y1;
@@ -73,8 +73,7 @@ int main()
             dmin=d;
         }
     }
-    double ans = 3.141592653589*(dmax - dmin);
-    cout<<setprecision(12)<<ans;
+    double ans = 4*atan(1)*(dmax*dmax - dmin*dmin);
+    cout<<setprecision(25)<<ans;
 
 }
-
