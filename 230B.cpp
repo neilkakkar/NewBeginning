@@ -6,7 +6,7 @@ using namespace std;
 
 #define sz (int)1e6+6
 
-
+//sorry
 int A[sz];
 int main()
 {
