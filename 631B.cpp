@@ -30,18 +30,18 @@ int main()
             }
         }
     }
-    char s[2*m];
+    //char s[2*m];
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<m;j++)
         {
-            s[2*j+1]=A[i][j]+'0';
-            s[2*j+2]=' ';
-            //printf("%d ",A[i][j]);
+            //s[2*j+1]=A[i][j]+'0';
+            //s[2*j+2]=' ';
+            printf("%d ",A[i][j]);
         }
 
-        printf("%s\n",s+1);
-        //printf("\n");
+        //printf("%s\n",s+1);
+        printf("\n");
     }
 }
 

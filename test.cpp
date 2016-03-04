@@ -13,9 +13,9 @@ bool charcomp(char a,char b){
     }
     else if(a>='a' && b<='Z')return true;// a<b
     else if(a<='Z' && b<='Z'){
-        return( dic[a-'A']<=dic[b-'A']);
+        return( dic[a-'A']<dic[b-'A']);
     }
-    else return (dic[a-'a']<=dic[b-'b']);
+    else return (dic[a-'a']<dic[b-'a']);
 
 }
 bool comp(string a,string b){
@@ -57,7 +57,7 @@ int main() {
     for(int i=0;i<26;i++){
         dic[s[i]-'a']=i+'a';
     }
-    //cout<<charcomp('q','w');
+    //cout<<charcomp('q','r');
     //cout<<dic<<endl;
     int n;
     //scanf("%d",&n);
