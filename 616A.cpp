@@ -2,69 +2,52 @@
 
 using namespace std;
 
-pair<string,string> reduce(string s1,string s2)
+string reduce(string s)
 {
-    int s1len=s1.length();
-    int s2len=s2.length();
-    if(s1len>s2len)
+    int slen=s.length();
+    int index=0;
+    while(s[index]=='0' && index<slen)
     {
-        string ans="";
-        int x = s1len-s2len;
-        while(x--)
-        {
-            ans+='0';
-
-        }
-        s2 = ans+s2;
+        index++;
     }
-    else if(s1len<s2len)
+    if(index==slen)
     {
-        string ans="";
-        int x = s2len-s1len;
-        while(x--)
-        {
-            ans+='0';
-
-        }
-        s1 = ans+s1;
+        return "0";
     }
-    return make_pair(s1,s2);
+    s = s.substr(index);
+    return s;
 }
 
 void compare(string a,string b)
 {
     //string r;
-    if(a[0]>b[0])
-    {
-        cout<<">";
-    }
-    else if(a[0]<b[0])
-    {
-        cout<<"<";
-        //return r;
-    }
-    else
-    {
-        if(a.length()==1)
+    int flag=0;
+    for(int i=0;i<a.length();i++){
+
+        if(a[i]>b[i])
         {
-            cout<<"=";
+            flag=1;
+            cout<<">";
+            break;
         }
-        else
+        else if(a[i]<b[i])
         {
-            a = a.substr(1);
-            b = b.substr(1);
-            compare(a,b);
+            flag=1;
+            cout<<"<";
+            break;
+            //return r;
         }
-    }
+
+    }if(flag==0)
+    cout<<"=";
 }
 int main()
 {
     string a,b;
     cin>>a>>b;
-    pair<string,string> x=reduce(a,b);
-    a=x.first;
-    b=x.second;
-    //cout<<a<<b;
+    a = reduce(a);
+    b = reduce(b);
+//    cout<<a<<b;
 
     if(a.length()>b.length())
     {
