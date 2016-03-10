@@ -35,9 +35,9 @@ int gcd(int a,int b){
 }
 int isprime(int p){
     if(p<sz)return prime[p];
-    if(p==2)return 1;
-    if(p%2==0)return 0;
-    for(int i=3;i*i<p;i+=2){
+    //if(p==2)return 1;
+    //if(p%2==0)return 0;
+    for(int i=primes[primes.size()-1];i*i<p;i+=2){
         if(p%i==0)return 0;
     }
     return 1;
