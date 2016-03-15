@@ -11,8 +11,8 @@ int main()
         string s;
         cin>>s;
         int slen = s.length();
-
-        if(slen%2==0)
+        if(slen==1)cout<<"NO\n";
+        else if(slen%2==0)
         {
             int flag=0;
             int lptr=0;
@@ -45,7 +45,7 @@ int main()
             }
             s1+=s1;
             s2+=s2;
-
+            //cout<<s1<<" "<<s2<<endl;
             while(p1<slen && p<slen){
                 if(s1[p1]!=s[p] && flag1==0){
                     p++;

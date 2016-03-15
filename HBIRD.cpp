@@ -4,7 +4,6 @@ using namespace std;
 
 #define sz 350
 
-int A[sz][sz*sz];
 vector<int> R;
 int main()
 {
@@ -14,8 +13,24 @@ int main()
     {
         for(int j=0;j<M;j++)
         {
-            cin>>A[i][j];
+            int x;
+            cin>>x;
+            if(x>0)
+            R.push_back(x);
         }
+    }
+    sort(R.begin(),R.end(),greater<int>());
+    for(int i=0;i<Q;i++){
+        int G;
+        cin>>G;
+        long long ans=0;
+        while(G>0){
+            for(int j=0;j<R.size();j++){
+                ans+=G/R[j];
+                G%=R[j];
+            }
+        }
+        cout<<ans<<endl;
     }
 
 
