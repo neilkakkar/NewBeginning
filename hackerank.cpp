@@ -14,7 +14,7 @@ int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
 double A[10]={95,85,80,70,60};
 double B[10] = {85,95,70,65,70};
-
+//check
 double ans=0;
 double sumA=0;
 double sumB=0;
