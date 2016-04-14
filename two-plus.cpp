@@ -4,7 +4,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-
+//oops
 int A[50][50];
 int B[50][50];
 int main() {
